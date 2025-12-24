@@ -1,26 +1,381 @@
 @import "tailwindcss";
 
+/* Neobrutalism Design System */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Base colors */
+    --background: #fffef9;
+    --foreground: #1a1a1a;
+
+    /* Neobrutalism color palette */
+    --neo-black: #1a1a1a;
+    --neo-white: #fffef9;
+
+    /* Primary colors - bright and bold */
+    --neo-yellow: #ffdd00;
+    --neo-pink: #ff6b9d;
+    --neo-blue: #00d4ff;
+    --neo-green: #7fff00;
+    --neo-orange: #ff9500;
+    --neo-purple: #b388ff;
+    --neo-red: #ff4757;
+    --neo-mint: #00ffc8;
+
+    /* Pastel variants */
+    --neo-yellow-light: #fff59d;
+    --neo-pink-light: #ffb3d0;
+    --neo-blue-light: #80eaff;
+    --neo-green-light: #ccff99;
+    --neo-orange-light: #ffcc80;
+    --neo-purple-light: #d4b8ff;
+
+    /* Shadows and borders */
+    --neo-shadow-color: var(--neo-black);
+    --neo-shadow-sm: 2px 2px 0px var(--neo-shadow-color);
+    --neo-shadow: 4px 4px 0px var(--neo-shadow-color);
+    --neo-shadow-md: 6px 6px 0px var(--neo-shadow-color);
+    --neo-shadow-lg: 8px 8px 0px var(--neo-shadow-color);
+    --neo-shadow-xl: 12px 12px 0px var(--neo-shadow-color);
+
+    --neo-border-color: var(--neo-black);
+    --neo-border: 3px solid var(--neo-border-color);
+    --neo-border-thin: 2px solid var(--neo-border-color);
+    --neo-border-thick: 4px solid var(--neo-border-color);
+
+    --neo-radius: 0px;
+    --neo-radius-sm: 4px;
+    --neo-radius-md: 8px;
+    --neo-radius-lg: 12px;
+}
+
+/* Dark mode colors */
+.dark {
+    --background: #1a1a1a;
+    --foreground: #fffef9;
+
+    --neo-black: #fffef9;
+    --neo-white: #2a2a2a;
+
+    /* Primary colors stay vibrant in dark mode */
+    --neo-yellow: #ffdd00;
+    --neo-pink: #ff6b9d;
+    --neo-blue: #00d4ff;
+    --neo-green: #7fff00;
+    --neo-orange: #ff9500;
+    --neo-purple: #b388ff;
+    --neo-red: #ff4757;
+    --neo-mint: #00ffc8;
+
+    /* Darker pastel variants for dark mode */
+    --neo-yellow-light: #b39800;
+    --neo-pink-light: #b34a6e;
+    --neo-blue-light: #0095b3;
+    --neo-green-light: #59b300;
+    --neo-orange-light: #b36900;
+    --neo-purple-light: #7d5fb3;
+
+    /* Shadows use the inverted color in dark mode */
+    --neo-shadow-color: #fffef9;
+    --neo-border-color: #fffef9;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    /* Map neobrutalism colors to Tailwind */
+    --color-neo-black: var(--neo-black);
+    --color-neo-white: var(--neo-white);
+    --color-neo-yellow: var(--neo-yellow);
+    --color-neo-pink: var(--neo-pink);
+    --color-neo-blue: var(--neo-blue);
+    --color-neo-green: var(--neo-green);
+    --color-neo-orange: var(--neo-orange);
+    --color-neo-purple: var(--neo-purple);
+    --color-neo-red: var(--neo-red);
+    --color-neo-mint: var(--neo-mint);
+    --color-neo-yellow-light: var(--neo-yellow-light);
+    --color-neo-pink-light: var(--neo-pink-light);
+    --color-neo-blue-light: var(--neo-blue-light);
+    --color-neo-green-light: var(--neo-green-light);
+    --color-neo-orange-light: var(--neo-orange-light);
+    --color-neo-purple-light: var(--neo-purple-light);
+
+    /* Font family */
+    --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+    --font-mono: var(--font-space-mono), monospace;
+
+    /* Custom shadows */
+    --shadow-neo-sm: var(--neo-shadow-sm);
+    --shadow-neo: var(--neo-shadow);
+    --shadow-neo-md: var(--neo-shadow-md);
+    --shadow-neo-lg: var(--neo-shadow-lg);
+    --shadow-neo-xl: var(--neo-shadow-xl);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition:
+        background-color 0.2s ease-in-out,
+        color 0.2s ease-in-out;
+}
+
+/* Neobrutalism utility classes */
+.neo-border {
+    border: var(--neo-border);
+}
+
+.neo-border-thin {
+    border: var(--neo-border-thin);
+}
+
+.neo-border-thick {
+    border: var(--neo-border-thick);
+}
+
+.neo-shadow-sm {
+    box-shadow: var(--neo-shadow-sm);
+}
+
+.neo-shadow {
+    box-shadow: var(--neo-shadow);
+}
+
+.neo-shadow-md {
+    box-shadow: var(--neo-shadow-md);
+}
+
+.neo-shadow-lg {
+    box-shadow: var(--neo-shadow-lg);
+}
+
+.neo-shadow-xl {
+    box-shadow: var(--neo-shadow-xl);
+}
+
+/* Interactive shadow - moves on hover/active */
+.neo-interactive {
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    transition:
+        transform 0.1s ease-in-out,
+        box-shadow 0.1s ease-in-out;
+}
+
+.neo-interactive:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--neo-shadow-color);
+}
+
+.neo-interactive:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--neo-shadow-color);
+}
+
+/* Button base styles */
+.neo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    cursor: pointer;
+    transition:
+        transform 0.1s ease-in-out,
+        box-shadow 0.1s ease-in-out;
+}
+
+.neo-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--neo-shadow-color);
+}
+
+.neo-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--neo-shadow-color);
+}
+
+/* Card styles */
+.neo-card {
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow);
+    background: var(--neo-white);
+    padding: 1.5rem;
+}
+
+/* Input styles */
+.neo-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: var(--neo-border);
+    box-shadow: var(--neo-shadow-sm);
+    background: var(--neo-white);
+    color: var(--foreground);
+    outline: none;
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.neo-input:focus {
+    box-shadow: var(--neo-shadow);
+}
+
+.neo-input::placeholder {
+    color: #888;
+}
+
+/* Badge/Tag styles */
+.neo-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: var(--neo-border-thin);
+    box-shadow: 2px 2px 0px var(--neo-shadow-color);
+}
+
+/* Text selection */
+::selection {
+    background: var(--neo-yellow);
+    color: #1a1a1a;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+    border-left: var(--neo-border-thin);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neo-shadow-color);
+    border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
+}
+
+/* Link styles */
+.neo-link {
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 3px solid var(--neo-border-color);
+    transition: background-color 0.1s ease-in-out;
+}
+
+.neo-link:hover {
+    background-color: var(--neo-yellow);
+    color: #1a1a1a;
+}
+
+/* Heading styles with marker effect */
+.neo-heading {
+    position: relative;
+    display: inline-block;
+}
+
+.neo-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: var(--neo-yellow);
+    z-index: -1;
+}
+
+/* Checkbox/Radio neobrutalism style */
+.neo-checkbox {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: var(--neo-border);
+    background: var(--neo-white);
+    cursor: pointer;
+    position: relative;
+}
+
+.neo-checkbox:checked {
+    background: var(--neo-yellow);
+}
+
+.neo-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 900;
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+/* Divider */
+.neo-divider {
+    height: 3px;
+    background: var(--neo-border-color);
+    border: none;
+    margin: 2rem 0;
+}
+
+/* Container with max-width */
+.neo-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Grid pattern background (optional decorative) */
+.neo-grid-bg {
+    background-image:
+        linear-gradient(var(--neo-border-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--neo-border-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: var(--background);
+}
+
+/* Dotted pattern background (optional decorative) */
+.neo-dots-bg {
+    background-image: radial-gradient(
+        var(--neo-border-color) 1.5px,
+        transparent 1.5px
+    );
+    background-size: 16px 16px;
+    background-color: var(--background);
+}
+
+/* Dark mode specific text colors for colored backgrounds */
+.dark .bg-neo-yellow,
+.dark .bg-neo-pink,
+.dark .bg-neo-blue,
+.dark .bg-neo-green,
+.dark .bg-neo-orange,
+.dark .bg-neo-purple,
+.dark .bg-neo-mint {
+    color: #1a1a1a;
+}
+
+.dark .bg-neo-red {
+    color: #fffef9;
 }
