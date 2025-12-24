@@ -1,30 +1,32 @@
-import { InputHTMLAttributes, forwardRef } from "react";
+import { TextareaHTMLAttributes, forwardRef } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
   fullWidth?: boolean;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, fullWidth = true, className = "", id, ...props }, ref) => {
-    const inputId = id || label?.toLowerCase().replace(/\s+/g, "-");
+    const textareaId = id || label?.toLowerCase().replace(/\s+/g, "-");
 
     return (
       <div className={`${fullWidth ? "w-full" : ""}`}>
         {label && (
           <label
-            htmlFor={inputId}
+            htmlFor={textareaId}
             className="block mb-2 text-sm font-bold uppercase tracking-wide text-neo-black dark:text-neo-white"
           >
             {label}
           </label>
         )}
-        <input
+        <textarea
           ref={ref}
-          id={inputId}
+          id={textareaId}
           className={`
             neo-input
+            min-h-[120px]
+            resize-y
             ${error ? "border-neo-red" : ""}
             ${className}
           `}
@@ -35,9 +37,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
-Input.displayName = "Input";
+Textarea.displayName = "Textarea";
 
-export default Input;
+export default Textarea;

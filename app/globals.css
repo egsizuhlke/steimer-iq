@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* Neobrutalism Design System */
-
 :root {
     /* Base colors */
     --background: #fffef9;
@@ -48,7 +46,6 @@
     --neo-radius-lg: 12px;
 }
 
-/* Dark mode colors */
 .dark {
     --background: #1a1a1a;
     --foreground: #fffef9;
@@ -122,6 +119,19 @@ body {
     transition:
         background-color 0.2s ease-in-out,
         color 0.2s ease-in-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--foreground);
+}
+
+p {
+    color: var(--foreground);
 }
 
 /* Neobrutalism utility classes */

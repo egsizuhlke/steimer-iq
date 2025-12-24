@@ -1,16 +1,15 @@
-import {
-  Badge,
-  Button,
-  Card,
+import Badge from "@/app/components/Badge";
+import Button from "@/app/components/Button";
+import Card, {
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-  Input,
-  Select,
-  Textarea,
-  ThemeToggle,
-} from "../components";
+} from "@/app/components/Card";
+import Input from "@/app/components/Input";
+import Select from "@/app/components/Select";
+import Textarea from "@/app/components/Textarea";
+import ThemeToggle from "@/app/components/ThemeToggle";
 
 export default function Page() {
   return (
